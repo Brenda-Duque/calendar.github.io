@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="pesquisa" (ionInput)="filterList($event)" placeholder="Quem procuras?"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let usuario of usuarios">
+      <ion-item button [routerLink]="[ '/perfil', usuario.id ]">
+        <ion-label>
+          @{{ usuario.username }}
+          <p> {{ usuario.email }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

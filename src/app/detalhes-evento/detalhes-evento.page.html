@@ -1,0 +1,55 @@
+  
+<ion-header>
+  <ion-toolbar id="tbr-header">
+    <ion-buttons slot="start">
+      <ion-back-button color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center"> {{ evento.titulo }} </h1>
+
+  <ion-item lines="full">
+    <h5 class="ion-text-center"> {{ evento.descricao }} </h5>
+  </ion-item>
+
+  <ion-item lines="full" class="ion-text-center">
+    <p > {{ evento.cidade }} • {{ evento.local }} </p>
+  </ion-item>
+
+  <ion-item lines="full" class="ion-text-center">
+    <p > @{{ evento.usuarioNome }} • {{ evento.comeco | date: short }} </p>
+    <ion-item button lines="none" (click)="add()">
+      <ion-icon name="add-outline"></ion-icon>
+      <p> {{ evento.numAdd }} </p>
+    </ion-item>
+  </ion-item>
+
+  <ion-item button *ngFor="let comentario of comentarios">
+    <ion-label>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h2>@{{ comentario.username }}</h2>
+          </ion-col>
+          <ion-col>
+            <p>{{ comentario.createdAt | date: short}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <h4>{{ comentario.coment }}</h4>
+    </ion-label>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea placeholder="Escreva algo..." [(ngModel)]="comentario.coment"></ion-textarea>
+    <ion-button fill="clear" slot="end" (click)="coment()">
+      <ion-icon name="send-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

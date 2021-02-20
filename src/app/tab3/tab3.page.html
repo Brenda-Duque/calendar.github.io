@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title color="light">
+      <div class="nome_user"></div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/configuracoes">
+        <ion-icon slot="icon-only" color="light" name="settings-outline"></ion-icon>      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">    
+    <ion-list>
+      <ion-item-sliding *ngFor="let evento of eventos">
+        <ion-item button>
+          <ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <h2>{{ evento.titulo }}</h2>
+                </ion-col>
+                <ion-col>
+                  <p>{{ evento.comeco | date: short}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <h4>{{ evento.descricao }}</h4>
+          </ion-label>
+        </ion-item>
+  
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteEvento(evento.id)">
+            <ion-icon slot="top" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+
+</ion-content>

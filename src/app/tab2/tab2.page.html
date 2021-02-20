@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="light">
+        <ion-icon slot="icon-only" name="calendar"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title color="light">
+      {{ currentMonth }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+  <div *ngIf="showAddEvent" class="ion-padding">
+    <ion-item>
+      <ion-label><b>Título:</b></ion-label>
+      <ion-input type="text" placeholder="Qual o evento?" [(ngModel)]="evento.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Descrição:</b></ion-label>
+      <ion-input type="text" placeholder="O que vai acontecer?" [(ngModel)]="evento.descricao"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Cidade:</b></ion-label>
+      <ion-select [(ngModel)]="evento.cidade" placeholder="Onde vai acontecer?">
+        <ion-select-option value="Águas Belas"> Águas Belas </ion-select-option>
+        <ion-select-option value="Angelim"> Angelim </ion-select-option>
+        <ion-select-option value="Bom Conselho"> Bom Conselho </ion-select-option>
+        <ion-select-option value="Brejão"> Brejão </ion-select-option>
+        <ion-select-option value="Buíque"> Buíque </ion-select-option>
+        <ion-select-option value="Caetés"> Caetés </ion-select-option>
+        <ion-select-option value="Calçado"> Calçado </ion-select-option>
+        <ion-select-option value="Canhotinho"> Canhotinho </ion-select-option>
+        <ion-select-option value="Capoeiras"> Capoeiras </ion-select-option>
+        <ion-select-option value="Correntes"> Correntes </ion-select-option>
+        <ion-select-option value="Garanhuns"> Garanhuns </ion-select-option>
+        <ion-select-option value="Iati"> Iati </ion-select-option>
+        <ion-select-option value="Itaíba"> Itaíba </ion-select-option>
+        <ion-select-option value="Jucati"> Jucati </ion-select-option>
+        <ion-select-option value="Jupi"> Jupi </ion-select-option>
+        <ion-select-option value="Jurema"> Jurema </ion-select-option>
+        <ion-select-option value="Lagoa do Ouro"> Lagoa do Ouro </ion-select-option>
+        <ion-select-option value="Lajedo"> Lajedo </ion-select-option>
+        <ion-select-option value="Palmeirina"> Palmeirina </ion-select-option>
+        <ion-select-option value="Paranatama"> Paranatama </ion-select-option>
+        <ion-select-option value="Pedra"> Pedra </ion-select-option>
+        <ion-select-option value="Saloá"> Saloá </ion-select-option>
+        <ion-select-option value="São João"> São João </ion-select-option>
+        <ion-select-option value="Terezinha"> Terezinha </ion-select-option>
+        <ion-select-option value="Tupanatinga"> Tupanatinga </ion-select-option>
+        <ion-select-option value="Venturosa"> Venturosa </ion-select-option>
+        <ion-select-option value="Outras cidades"> Outras cidades </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Local:</b></ion-label>
+      <ion-input type="text" placeholder="Em que escola?" [(ngModel)]="evento.local"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label><b>Horário:</b></ion-label>
+      <ion-datetime doneText="OK" cancelText="Cancelar" i18n displayFormat="DD/MM/YYYY HH:mm" pickerFormat="MMM D HH:mm" [(ngModel)]="evento.comeco" [min]="minDate"></ion-datetime>
+    </ion-item>
+    <ion-button expand="block" (click)="addEvento()">Adicionar</ion-button>
+  </div>
+
+  <calendar *ngIf="!showAddEvent" id="myCalendar"
+  locale="pt-BR"
+  [eventSource]="allEvents"
+  calendarMode="month" 
+  startHour="6"
+  endHour="20"
+  step="30"
+  startingDayWeek="1"
+  [currentDate]="currentDate"
+  (onTitleChanged)="onViewTitleChanged($event)">
+</calendar>
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="showHideForm()">
+    <ion-icon *ngIf="!showAddEvent" name="add"></ion-icon>
+    <ion-icon *ngIf="showAddEvent" name="close"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+</ion-content>

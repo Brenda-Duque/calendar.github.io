@@ -1,0 +1,21 @@
+  
+<ion-content>
+  <ion-button id="btn-exit" fill="clear" routerLink="/configuracoes">
+    <ion-icon slot="icon-only" name="close-outline" ></ion-icon>
+  </ion-button>
+
+  <h4 class="ion-text-center">Qual sua nova senha?</h4>
+
+  <ion-list class="ion-padding">
+    <ion-item lines="full">
+      <ion-input placeholder="Nova senha" type="password" [(ngModel)]="usuario.senha"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-input placeholder="Confirme a nova senha" type="password" [(ngModel)]="usuario.confsenha"></ion-input>
+    </ion-item>
+
+      <ion-button id="btn-att" class="ion-margin-vertical" shape="round" expand="block" (click)="atualizarSenha()">Atualizar</ion-button>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-label><b>Filtre por cidade</b></ion-label>
+      <ion-select [(ngModel)]="filtro" (ionChange)="filterCity()">
+        <ion-select-option value="Águas Belas"> Águas Belas </ion-select-option>
+        <ion-select-option value="Angelim"> Angelim </ion-select-option>
+        <ion-select-option value="Bom Conselho"> Bom Conselho </ion-select-option>
+        <ion-select-option value="Brejão"> Brejão </ion-select-option>
+        <ion-select-option value="Buíque"> Buíque </ion-select-option>
+        <ion-select-option value="Caetés"> Caetés </ion-select-option>
+        <ion-select-option value="Calçado"> Calçado </ion-select-option>
+        <ion-select-option value="Canhotinho"> Canhotinho </ion-select-option>
+        <ion-select-option value="Capoeiras"> Capoeiras </ion-select-option>
+        <ion-select-option value="Correntes"> Correntes </ion-select-option>
+        <ion-select-option value="Garanhuns"> Garanhuns </ion-select-option>
+        <ion-select-option value="Iati"> Iati </ion-select-option>
+        <ion-select-option value="Itaíba"> Itaíba </ion-select-option>
+        <ion-select-option value="Jucati"> Jucati </ion-select-option>
+        <ion-select-option value="Jupi"> Jupi </ion-select-option>
+        <ion-select-option value="Jurema"> Jurema </ion-select-option>
+        <ion-select-option value="Lagoa do Ouro"> Lagoa do Ouro </ion-select-option>
+        <ion-select-option value="Lajedo"> Lajedo </ion-select-option>
+        <ion-select-option value="Palmeirina"> Palmeirina </ion-select-option>
+        <ion-select-option value="Paranatama"> Paranatama </ion-select-option>
+        <ion-select-option value="Pedra"> Pedra </ion-select-option>
+        <ion-select-option value="Saloá"> Saloá </ion-select-option>
+        <ion-select-option value="São João"> São João </ion-select-option>
+        <ion-select-option value="Terezinha"> Terezinha </ion-select-option>
+        <ion-select-option value="Tupanatinga"> Tupanatinga </ion-select-option>
+        <ion-select-option value="Venturosa"> Venturosa </ion-select-option>
+        <ion-select-option value="Outras cidades"> Outras cidades </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" routerLink="/lista-usuarios">
+        <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let evento of eventos">
+      <ion-item button [routerLink]="[ '/detalhes-evento', evento.id ]">
+        <ion-label>
+          @{{ evento.usuarioNome }}
+          <p> {{ evento.titulo }} • {{ evento.comeco | date: 'short' }} </p>
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
